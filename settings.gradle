@@ -1,0 +1,5 @@
+rootProject.name = 'test'
+include 'entity'
+include 'common'
+include 'security'
+

@@ -1,0 +1,69 @@
+server:
+  port: 8761
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: smart-community-bean
+  datasource:
+    url: jdbc:mysql://localhost:3306/city?serverTimezone=Hongkong&useSSL=false&useUnicode=true&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
+    hikari:
+      username: root
+      password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+  session:
+    store-type: none
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+
+
+mybatis:
+  typeAliasesPackage: com.liaoin.muti.test # com.artopcn.service.worker.siting.entity;
+  mapperLocations: classpath*:mapper/**/*.xml
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+mapper:
+  not-empty: true
+  mappers: com.liaoin.muti.test.mybatis.BaseMapper
+  identity: mysql
+  before: true
+
+
+config:
+  registry:
+    no-verify[0]: /swagger-**
+    no-verify[1]: /images/**
+    no-verify[2]: /webjars/**
+    no-verify[3]: /v2/controller-docs**
+    no-verify[4]: /swagger-resources/configuration/ui**
+    no-verify[5]: /swagger-resources/configuration/security**
+    no-verify[6]: /websocket/socketServer.ws**
+    no-verify[7]: /sockjs/socketServer.ws**
+    no-verify[8]: /doc.html
+    no-verify[9]: /api-docs-ext
+    no-verify[10]: /v2/api-docs
+    no-verify[11]: /error
+
+liaoin:
+  security:
+    browser:
+      loginType: REDIRECT
+    default-login-processing-url-from: /authentication/form
