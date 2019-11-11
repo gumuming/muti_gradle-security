@@ -64,7 +64,6 @@ public class PropertyOrder implements Serializable {
     private String authPassWord;
 
     @Column(columnDefinition = "varchar(50) NOT NULL COMMENT '授权人职位'")
-
     @ApiModelProperty("授权人职位")
     private String authPosition;
 

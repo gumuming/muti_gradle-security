@@ -38,16 +38,6 @@ allprojects {
     }
 }
 
-//bootJar {
-//    baseName = 'test-muti'
-//    enabled = true
-//}
-//
-//jar {
-//    baseName = 'test-muti'
-//    enabled = true
-//}
-
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -60,14 +50,12 @@ repositories {
 
 dependencies {
     compile project (':entity')
-    
     compile project (':security')
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation  "org.springframework.boot:spring-boot-starter-web"
     implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
     runtimeOnly 'mysql:mysql-connector-java'
-
     testImplementation('org.springframework.boot:spring-boot-starter') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }

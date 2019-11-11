@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.liaoin.muti.test.project.mapper.PropertyOrderMapper">
-
+    <resultMap id="BaseResultMap" type="com.liaoin.muti.test.project.entity.PropertyOrder">
+        <id column="id" jdbcType="CHAR" property="id" />
+        <result column="create_at" jdbcType="TIMESTAMP" property="createAt" />
+        <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+        <result column="auth_id" jdbcType="INTEGER" property="authId" />
+        <result column="auth_month_count" jdbcType="DECIMAL" property="authMonthCount" />
+        <result column="auth_name" jdbcType="VARCHAR" property="authName" />
+        <result column="auth_pass_word" jdbcType="VARCHAR" property="authPassWord" />
+        <result column="auth_position" jdbcType="VARCHAR" property="authPosition" />
+        <result column="authorized_count" jdbcType="DECIMAL" property="authorizedCount" />
+    </resultMap>
+    <select id="testXml" resultMap="BaseResultMap">
+        select * from t_property_order where auth_name=#{name}
+    </select>
 </mapper>

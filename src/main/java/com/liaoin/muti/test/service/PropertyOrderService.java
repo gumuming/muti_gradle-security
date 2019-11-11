@@ -7,4 +7,6 @@ public interface PropertyOrderService {
     Response findById(String id);
 
     Response save(PropertyOrder propertyOrder);
+
+    Response testXml(String name);
 }

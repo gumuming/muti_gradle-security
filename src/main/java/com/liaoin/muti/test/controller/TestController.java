@@ -45,4 +45,11 @@ public class TestController {
         return propertyOrderService.findById(id);
     }
 
+    @ApiOperation("testXml")
+    @GetMapping("testXml")
+    @ApiImplicitParam(name = "Authorization", value = "授权码 以 Bearer  带一个空格", required = true, dataType = "string", paramType = "header")
+    public Response testXml(@RequestParam String name){
+        return propertyOrderService.testXml(name);
+    }
+
 }

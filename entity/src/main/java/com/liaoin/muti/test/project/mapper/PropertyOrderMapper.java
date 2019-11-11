@@ -9,4 +9,5 @@ import tk.mybatis.mapper.common.BaseMapper;
 */
 @Mapper
 public interface PropertyOrderMapper extends BaseMapper<PropertyOrder> {
+    PropertyOrder testXml(String name);
 }

@@ -37,4 +37,9 @@ public class PropertyOrderServiceImpl implements PropertyOrderService {
         }
         return Response.success();
     }
+
+    @Override
+    public Response testXml(String name) {
+        return Response.success(propertyOrderMapper.testXml(name));
+    }
 }
