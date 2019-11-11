@@ -1,6 +1,7 @@
 package com.liaoin.muti.test.security;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -27,6 +28,8 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("登陆校验名称:{}",username);
-        return UserInfo.builder().username(username).password(bCryptPasswordEncoder.encode("123456")).build();
+        return new UserInfo(1,"hello",bCryptPasswordEncoder.encode("123456"),true,true,true,true,
+                AuthorityUtils.commaSeparatedStringToAuthorityList("admin,ROLE_USER")
+        );
     }
 }
