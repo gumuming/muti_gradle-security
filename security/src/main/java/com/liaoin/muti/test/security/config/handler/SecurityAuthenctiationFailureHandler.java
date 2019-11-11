@@ -1,9 +1,9 @@
 package com.liaoin.muti.test.security.config.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.liaoin.muti.test.http.Response;
 import com.liaoin.muti.test.security.config.properties.LoginResponseType;
 import com.liaoin.muti.test.security.config.properties.SecurityProperties;
-import com.liaoin.muti.test.security.config.response.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
@@ -36,7 +36,7 @@ public class SecurityAuthenctiationFailureHandler  extends SimpleUrlAuthenticati
         if (LoginResponseType.JSON.equals(securityProperties.getBrowser().getLoginType())) {
             response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             response.setContentType("application/json;charset=UTF-8");
-            response.getWriter().write(objectMapper.writeValueAsString(new Result(exception.getMessage())));
+            response.getWriter().write(objectMapper.writeValueAsString(Response.failed(exception.getMessage())));
         }else{
             super.onAuthenticationFailure(request, response, exception);
         }

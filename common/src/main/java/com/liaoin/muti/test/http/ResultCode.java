@@ -1,4 +1,4 @@
-package com.liaoin.muti.test.security.config.response;
+package com.liaoin.muti.test.http;
 
 /**
  * @author mc

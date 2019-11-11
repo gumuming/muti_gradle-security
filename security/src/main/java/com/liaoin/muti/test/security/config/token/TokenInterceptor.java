@@ -3,8 +3,8 @@ package com.liaoin.muti.test.security.config.token;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-import com.liaoin.muti.test.security.config.response.Result;
-import com.liaoin.muti.test.security.config.response.ResultCode;
+import com.liaoin.muti.test.http.Response;
+import com.liaoin.muti.test.http.ResultCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,7 +52,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
 		response.setHeader("Cache-Control", "no-store");
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		try (PrintWriter out = response.getWriter()) {
-			out.write(objectMapper.writeValueAsString(new Result<>(HttpStatus.FORBIDDEN.value(), ResultCode.PERMISSION_NO_ACCESS.getMsg())));
+			out.write(objectMapper.writeValueAsString(Response.failed(HttpStatus.FORBIDDEN.value(), ResultCode.PERMISSION_NO_ACCESS.getMsg())));
 			out.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
