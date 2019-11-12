@@ -62,6 +62,8 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'io.projectreactor:reactor-test'
+    compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '4.10'
+
 }
 
 test {

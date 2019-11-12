@@ -3,4 +3,6 @@ dependencies {
     compile group: 'org.springframework.data', name: 'spring-data-redis', version: '2.1.6.RELEASE'
     compile 'io.jsonwebtoken:jjwt-api:0.10.1'
     runtime 'io.jsonwebtoken:jjwt-impl:0.10.1', 'io.jsonwebtoken:jjwt-jackson:0.10.1'
+    compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.14.3'
+
 }

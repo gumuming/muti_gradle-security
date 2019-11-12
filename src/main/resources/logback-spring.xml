@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="false" scanPeriod="60 seconds">
+<!--/home/logs-->
+    <contextName>logback</contextName>
+    <property name="app.name" value="test-muit-log"/>
+    <appender name="stdout_info" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{36} [%file : %line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="stdout_warn" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%yellow(%d [%thread] %-5level %logger{36} [%file : %line] - %msg%n)</pattern>
+        </encoder>
+    </appender>
+    <appender name="stdout_error" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <pattern>%red(%d [%thread] %-5level %logger{36} [%file : %line] - %msg%n)</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/home/logs/${app.name}.json</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/home/logs/${app.name}/%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>180</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"app":"${app.name}"}}</customFields>
+            <includeMdcKeyName>requestId</includeMdcKeyName>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="stdout_info"/>
+        <appender-ref ref="stdout_warn"/>
+        <appender-ref ref="stdout_error"/>
+        <appender-ref ref="file"/>
+    </root>
+
+    <logger name="com.example.logback" level="error"/>
+
+    <logger name="stdout_log" level="info" additivity="false">
+        <appender-ref ref="stdout_info"/>
+        <appender-ref ref="stdout_warn"/>
+        <appender-ref ref="stdout_error"/>
+    </logger>
+
+</configuration>
