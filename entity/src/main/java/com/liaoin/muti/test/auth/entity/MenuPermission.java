@@ -1,22 +1,23 @@
 package com.liaoin.muti.test.auth.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import io.swagger.annotations.ApiModel;
+import lombok.*;
 import com.liaoin.muti.test.base.AbstractEntity;
 
 
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
 @Getter
 @Setter
-@Entity
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@ApiModel(value = "权限菜单")
 @Table(name = "t_permission_menu")
+@org.hibernate.annotations.Table(appliesTo = "t_permission_menu",comment = "权限菜单")
 public class MenuPermission extends AbstractEntity {
 
     @Column(name = "c_name", columnDefinition = "VARCHAR(255) COMMENT '路由名称'")

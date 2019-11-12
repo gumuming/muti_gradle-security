@@ -2,20 +2,21 @@ package com.liaoin.muti.test.auth.entity;
 
 
 import com.liaoin.muti.test.base.AbstractEntity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import io.swagger.annotations.ApiModel;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
+@Entity
 @Getter
 @Setter
-@Entity
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@ApiModel(value = "权限-用户")
 @Table(name = "t_user")
+@org.hibernate.annotations.Table(appliesTo = "t_permission_menu",comment = "权限-用户")
 public class User extends AbstractEntity {
 
     @Column(name = "c_user_id", columnDefinition = "CHAR(32) NOT NULL COMMENT '用户ID'")
