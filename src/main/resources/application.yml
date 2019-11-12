@@ -31,6 +31,11 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  redis:
+    host: 39.100.124.150
+    port: 6379
+    database: 2
+
 
 
 
@@ -64,6 +69,13 @@ config:
 
 liaoin:
   security:
+    o-auth2:
+      clients[0]:
+        clientId: user_1
+        clientIdSecret: 123456
+      clients[1]:
+        clientId: user_2
+        clientIdSecret: 12345
     browser:
-      loginType: REDIRECT
+      loginType: JSON
     default-login-processing-url-from: /authentication/form

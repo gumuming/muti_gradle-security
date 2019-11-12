@@ -19,9 +19,9 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisHelper {
 
-    private static   StringRedisTemplate stringRedisTemplate;
+    private    StringRedisTemplate stringRedisTemplate;
 
-    private  static RedisTemplate redisTemplate;
+    private   RedisTemplate redisTemplate;
 
     @Autowired
     public RedisHelper(StringRedisTemplate stringRedisTemplate, RedisTemplate redisTemplate) {
@@ -35,7 +35,7 @@ public class RedisHelper {
      * @param key   key
      * @param value value
      */
-    public static void set(String key, String value) {
+    public  void set(String key, String value) {
         stringRedisTemplate.opsForValue().set(key(key), value);
     }
 
@@ -45,7 +45,7 @@ public class RedisHelper {
      * @param timeOut 超时时间
      * @param timeUnit 时间单位
      */
-    public static void setKeyExpire(String key,Integer timeOut, TimeUnit timeUnit){
+    public  void setKeyExpire(String key,Integer timeOut, TimeUnit timeUnit){
             stringRedisTemplate.expire(key,timeOut,timeUnit);
     }
 
@@ -57,7 +57,7 @@ public class RedisHelper {
      * @param timeOut  超时时间
      * @param timeUnit 时间单位
      */
-    public static void set(String key, String value, Integer timeOut, TimeUnit timeUnit) {
+    public  void set(String key, String value, Integer timeOut, TimeUnit timeUnit) {
         stringRedisTemplate.opsForValue().set(key(key), value, timeOut, timeUnit);
     }
 
@@ -67,7 +67,7 @@ public class RedisHelper {
      * @param key key
      * @return value
      */
-    public static String get(String key) {
+    public  String get(String key) {
         return stringRedisTemplate.opsForValue().get(key(key));
     }
 
@@ -76,7 +76,7 @@ public class RedisHelper {
      * @param key
      * @return
      */
-    public  static Object getObject(String key) {
+    public   Object getObject(String key) {
         return redisTemplate.boundValueOps(key).get();
     }
 
@@ -88,7 +88,7 @@ public class RedisHelper {
      * @param delta 增量
      * @return 当前值
      */
-    public static Long increment(String key, long delta) {
+    public  Long increment(String key, long delta) {
         return stringRedisTemplate.opsForValue().increment(key(key), delta);
     }
 
@@ -98,7 +98,7 @@ public class RedisHelper {
      * @param key 原始key
      * @return 包装key
      */
-    public static String key(String key) {
+    public  String key(String key) {
         return key;
     }
 
@@ -108,7 +108,7 @@ public class RedisHelper {
      * @param key key
      * @return true 为不存在
      */
-    public static Boolean no(String key) {
+    public  Boolean no(String key) {
         val exist = stringRedisTemplate.hasKey(key(key));
         if (exist == null) {
             return true;
@@ -116,7 +116,7 @@ public class RedisHelper {
         return !exist;
     }
 
-    public static void remove(String key) {
+    public  void remove(String key) {
         stringRedisTemplate.delete(key(key));
     }
 
@@ -126,7 +126,7 @@ public class RedisHelper {
      * @param pattern 匹配模式
      * @return keys列表
      */
-    public static Set<String> keys(String pattern) {
+    public  Set<String> keys(String pattern) {
         return stringRedisTemplate.keys(key(pattern));
     }
 
@@ -136,7 +136,7 @@ public class RedisHelper {
      * @param key key
      * @return 秒
      */
-    public static Long getExpire(String key) {
+    public  Long getExpire(String key) {
         return stringRedisTemplate.getExpire(key(key), TimeUnit.SECONDS);
     }
 
@@ -147,7 +147,7 @@ public class RedisHelper {
      * @param dataList 待缓存的List数据
      * @return 缓存的对象
      */
-    public static Object setCacheList(String key, List<?> dataList) {
+    public  Object setCacheList(String key, List<?> dataList) {
         ListOperations<String, Object> listOperation = redisTemplate.opsForList();
         if (null != dataList) {
             int size = dataList.size();
@@ -164,7 +164,7 @@ public class RedisHelper {
      * @param key 缓存的键值
      * @return 缓存键值对应的数据
      */
-    public static List<?> getCacheList(String key) {
+    public  List<?> getCacheList(String key) {
         List<Object> dataList = new ArrayList<Object>();
         ListOperations<String, Object> listOperation = redisTemplate.opsForList();
         Long size = listOperation.size(key);
@@ -181,7 +181,7 @@ public class RedisHelper {
      * @param key 加锁的key
      * @return 是否加锁成功
      */
-    public static   Boolean lock(String key) {
+    public    Boolean lock(String key) {
         return lock(key, 3);
     }
 
@@ -192,7 +192,7 @@ public class RedisHelper {
      * @param seconds 锁有效时间
      * @return 是否加锁成功
      */
-    public static Boolean lock(String key, Integer seconds) {
+    public  Boolean lock(String key, Integer seconds) {
         return lock(key, seconds, TimeUnit.SECONDS);
     }
 
@@ -204,7 +204,7 @@ public class RedisHelper {
      * @param timeUnit 时间单位
      * @return 是否加锁成功
      */
-    public static Boolean lock(String key, Integer time, TimeUnit timeUnit) {
+    public  Boolean lock(String key, Integer time, TimeUnit timeUnit) {
         return lock(key, "", time, TimeUnit.SECONDS);
     }
 
@@ -217,7 +217,7 @@ public class RedisHelper {
      * @param timeUnit 时间单位
      * @return 是否加锁成功
      */
-    public static Boolean lock(String key, String value, Integer time, TimeUnit timeUnit) {
+    public  Boolean lock(String key, String value, Integer time, TimeUnit timeUnit) {
         return stringRedisTemplate.opsForValue().setIfAbsent(key, value, time, timeUnit);
     }
 
@@ -226,7 +226,7 @@ public class RedisHelper {
      *
      * @param key 加锁的key
      */
-    public static void unlock(String key) {
+    public  void unlock(String key) {
         stringRedisTemplate.delete(key);
     }
 
@@ -234,7 +234,7 @@ public class RedisHelper {
      * 设置redis 数据库
      * @param index
      */
-    public static void setDataBase(Integer index){
+    public  void setDataBase(Integer index){
         LettuceConnectionFactory connectionFactory = (LettuceConnectionFactory) stringRedisTemplate.getConnectionFactory();
         if (connectionFactory != null && index != connectionFactory.getDatabase()) {
             connectionFactory.setDatabase(index);

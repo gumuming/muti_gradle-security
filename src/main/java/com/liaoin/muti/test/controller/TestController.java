@@ -2,7 +2,7 @@ package com.liaoin.muti.test.controller;
 
 import com.liaoin.muti.test.project.entity.PropertyOrder;
 import com.liaoin.muti.test.http.Response;
-import com.liaoin.muti.test.security.config.annotation.AuthorizationToken;
+import com.liaoin.muti.test.security.annotation.AuthorizationToken;
 import com.liaoin.muti.test.service.PropertyOrderService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiModel;
@@ -35,12 +35,14 @@ public class TestController {
     }
     @PostMapping("save")
     @ApiOperation("save")
+    @ApiImplicitParam(name = "Authorization", value = "授权码 以 Bearer  带一个空格", required = true, dataType = "string", paramType = "header")
     public Response save(@RequestBody PropertyOrder propertyOrder){
         return propertyOrderService.save(propertyOrder);
     }
 
     @ApiOperation("查看详情")
     @GetMapping("findById")
+    @ApiImplicitParam(name = "Authorization", value = "授权码 以 Bearer  带一个空格", required = true, dataType = "string", paramType = "header")
     public Response findById(@RequestParam String id){
         return propertyOrderService.findById(id);
     }
