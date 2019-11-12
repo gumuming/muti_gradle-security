@@ -53,6 +53,7 @@ repositories {
 dependencies {
     compile project (':entity')
     compile project (':security')
+    compile project (':client')
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation  "org.springframework.boot:spring-boot-starter-web"

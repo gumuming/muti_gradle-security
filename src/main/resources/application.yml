@@ -41,7 +41,7 @@ spring:
 
 mybatis:
   typeAliasesPackage: com.liaoin.muti.test # com.artopcn.service.worker.siting.entity;
-  mapperLocations: classpath*:mapper/**/*.xml
+  mapperLocations: classpath*:repo/**/*.xml
 pagehelper:
   helperDialect: mysql
   reasonable: true

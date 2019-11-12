@@ -1,4 +1,4 @@
-package com.liaoin.muti.test.mybatis;
+package com.liaoin.muti.test.base;
 
 import tk.mybatis.mapper.genid.GenId;
 

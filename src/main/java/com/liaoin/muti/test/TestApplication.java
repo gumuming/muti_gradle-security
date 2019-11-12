@@ -28,7 +28,7 @@ import javax.sql.DataSource;
 *@date: 2019/11/7
 */
 @SpringBootApplication
-@MapperScan("com.liaoin.muti.test.project.mapper")
+@MapperScan("com.liaoin.muti.test.project.repo")
 public class TestApplication {
 
     public static void main(String[] args) {

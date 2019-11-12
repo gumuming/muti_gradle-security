@@ -226,7 +226,7 @@ public final class OptionalExt<T> {
      * If a value is present, apply the provided {@code Optional}-bearing
      * mapping function to it, return that result, otherwise return an empty
      * {@code Optional}.  This method is similar to {@link #map(Function)},
-     * but the provided com.liaoin.service.persist.mapper is one whose result is already an {@code Optional},
+     * but the provided com.liaoin.service.persist.repo is one whose result is already an {@code Optional},
      * and if invoked, {@code flatMap} does not wrap it with an additional
      * {@code Optional}.
      *
