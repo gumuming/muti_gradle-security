@@ -61,9 +61,20 @@ swagger:
     authMenu:
       base-package: com.liaoin.muti.test.controller.auth
       title: "权限-菜单"
+    file:
+      base-package: com.liaoin.muti.test.controller.file
+      title: "菜单"
+
 
 
 config:
+#  本地文件上传 -->>服务器
+  file:
+    file-host: 192.168.2.230
+    file-port: 9080
+    file-path: E:\apache-tomcat-8.5.39\webapps\test-file
+    file-url: test-file
+    file-type: java,php,py,go
   registry:
     no-verify[0]: /swagger-**
     no-verify[1]: /images/**
@@ -78,6 +89,7 @@ config:
     no-verify[10]: /v2/api-docs
     no-verify[11]: /error
     no-verify[12]: /user/login
+    no-verify[13]: /base/uploadForUeditor
 
 liaoin:
   security:
@@ -91,3 +103,14 @@ liaoin:
     browser:
       loginType: JSON
     default-login-processing-url-from: /authentication/form
+
+
+
+
+# 富文本上传 图片配置文件
+project:
+  properties:
+    files: business/message.properties,business/config.properties
+    ueditorConfig: config.json
+udeitor:
+  config: D:/config.json

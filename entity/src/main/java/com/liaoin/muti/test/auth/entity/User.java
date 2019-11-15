@@ -16,7 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @ApiModel(value = "权限-用户")
 @Table(name = "t_user")
-@org.hibernate.annotations.Table(appliesTo = "t_permission_menu",comment = "权限-用户")
+@org.hibernate.annotations.Table(appliesTo = "t_user",comment = "权限-用户")
 public class User extends AbstractEntity {
 
     @Column(name = "c_user_id", columnDefinition = "CHAR(32) NOT NULL COMMENT '用户ID'")

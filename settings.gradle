@@ -3,4 +3,5 @@ include 'entity'
 include 'common'
 include 'security'
 include 'client'
+include 'file'
 

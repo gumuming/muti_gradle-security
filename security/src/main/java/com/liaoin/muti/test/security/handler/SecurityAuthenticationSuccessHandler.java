@@ -6,7 +6,7 @@ import com.liaoin.muti.test.http.Response;
 import com.liaoin.muti.test.security.exception.SecurityAuthenticationException;
 import com.liaoin.muti.test.security.properties.LoginResponseType;
 import com.liaoin.muti.test.security.properties.SecurityProperties;
-import com.liaoin.muti.test.util.JsonUtils;
+import com.liaoin.muti.test.file.util.JsonUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.bouncycastle.util.encoders.Base64;

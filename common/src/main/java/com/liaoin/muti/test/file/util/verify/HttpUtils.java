@@ -1,4 +1,4 @@
-//package com.liaoin.muti.test.util.verify;
+//package com.liaoin.muti.test.file.util.verify;
 //
 //import org.apache.commons.lang3.StringUtils;
 //import org.apache.http.HttpResponse;

@@ -2,7 +2,7 @@ package com.liaoin.muti.test.okhttp;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.liaoin.muti.test.util.JsonUtils;
+import com.liaoin.muti.test.file.util.JsonUtils;
 import okhttp3.Response;
 import org.springframework.stereotype.Component;
 

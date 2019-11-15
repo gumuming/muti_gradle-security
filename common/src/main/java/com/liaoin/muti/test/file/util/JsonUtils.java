@@ -1,4 +1,4 @@
-package com.liaoin.muti.test.util;
+package com.liaoin.muti.test.file.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;

@@ -1,4 +1,4 @@
-package com.liaoin.muti.test.util.token;
+package com.liaoin.muti.test.file.util.token;
 
 
 import javax.crypto.Cipher;

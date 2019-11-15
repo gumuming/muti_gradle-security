@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.liaoin.muti.test.util;
+package com.liaoin.muti.test.file.util;
 
 import java.io.IOException;
 import java.io.InputStream;
