@@ -18,8 +18,9 @@ allprojects {
     targetCompatibility = 1.8
     [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
     repositories {
-        maven { url aliyunRepo }
+        mavenLocal()
         mavenCentral()
+        maven { url aliyunRepo }
         maven { url snapshotRepo }
         maven { url releaseRepo }
     }
