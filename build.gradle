@@ -19,8 +19,8 @@ allprojects {
     [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
     repositories {
         mavenLocal()
-        mavenCentral()
         maven { url aliyunRepo }
+        mavenCentral()
         maven { url snapshotRepo }
         maven { url releaseRepo }
     }

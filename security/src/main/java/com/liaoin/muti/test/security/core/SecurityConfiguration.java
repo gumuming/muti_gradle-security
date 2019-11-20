@@ -4,6 +4,7 @@ package com.liaoin.muti.test.security.core;
 import com.liaoin.muti.test.security.authorize.AuthorizeCofigManager;
 import com.liaoin.muti.test.security.handler.SecurityAuthenctiationFailureHandler;
 import com.liaoin.muti.test.security.handler.SecurityAuthenticationSuccessHandler;
+import com.liaoin.muti.test.security.mobile.MobileCodeAuthenticationSecurityConfig;
 import com.liaoin.muti.test.security.properties.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -33,6 +34,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private SecurityAuthenctiationFailureHandler securityAuthenctiationFailureHandler;
     @Resource
     AuthorizeCofigManager authorizeCofigManager;
+    @Resource
+    private MobileCodeAuthenticationSecurityConfig mobileCodeAuthenticationSecurityConfig;
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -76,7 +79,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .disable();
         //增加手机直接登陆
-    //    http.apply(mobileCodeAuthenticationSecurityConfig);
+        http.apply(mobileCodeAuthenticationSecurityConfig);
         //允许自定义头部信息
         http.headers().frameOptions().sameOrigin();
         //不需要验证的URL地址
@@ -84,7 +87,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
         //设置manager控制器
-//        SurpassmAuthenticationManager manager = new SurpassmAuthenticationManager();
+//        AuthenticationManager manager = new AuthenticationManager();
 //        manager.setAuthenticationManager(http.getSharedObject(AuthenticationManager.class));
 //        http.addFilterAfter(manager, UsernamePasswordAuthenticationFilter.class);
 

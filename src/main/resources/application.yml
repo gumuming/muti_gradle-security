@@ -7,10 +7,10 @@ spring:
   application:
     name: smart-community-bean
   datasource:
-    url: jdbc:mysql://localhost:3306/city?serverTimezone=Hongkong&useSSL=false&useUnicode=true&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
+    url: jdbc:mysql://39.100.124.150:3306/city?serverTimezone=Hongkong&useSSL=false&useUnicode=true&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
     hikari:
       username: root
-      password: 123456
+      password: share_epc#123456
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
@@ -68,7 +68,7 @@ swagger:
 
 
 config:
-#  本地文件上传 -->>服务器
+  #  本地文件上传 -->>服务器
   file:
     file-host: 192.168.2.230
     file-port: 9080
@@ -88,8 +88,9 @@ config:
     no-verify[9]: /api-docs-ext
     no-verify[10]: /v2/api-docs
     no-verify[11]: /error
-    no-verify[12]: /user/login
-    no-verify[13]: /base/uploadForUeditor
+    no-verify[12]: /user/login/authentication/form
+    no-verify[13]: /user/login/authentication/mobile
+    no-verify[14]: /base/uploadForUeditor
 
 liaoin:
   security:
@@ -103,6 +104,7 @@ liaoin:
     browser:
       loginType: JSON
     default-login-processing-url-from: /authentication/form
+    default-login-processing-url-phone: /authentication/mobile
 
 
 

@@ -33,11 +33,16 @@ public class UserController {
 
     @Value("${liaoin.security.default-login-processing-url-from}")
     private String loginUrl;
+
+    @Value("${liaoin.security.default-login-processing-url-phone}")
+    private String noPassWordUrl;
+
+
     @Resource
     JsonFromUrlHelper jsonFromUrlHelper;
 
-    @ApiOperation(value = "登陆接口")
-    @PostMapping("login")
+    @ApiOperation(value = "登陆接口 用户名和密码")
+    @PostMapping("login/authentication/form")
     @ApiImplicitParam(name = "Login", value = "Basic dXNlcl8xOjEyMzQ1Ng==", required = true, dataType = "string", paramType = "header")
     public Response login(HttpServletRequest httpServletRequest, @ApiParam("名称") @RequestParam("username") String username,
                           @ApiParam("密码") @RequestParam("password") String password){
@@ -46,6 +51,18 @@ public class UserController {
         stringStringHashMap.put("password",password);
         String login = httpServletRequest.getHeader("Login");
         String url = "http://localhost:" + port + loginUrl;
+        return jsonFromUrlHelper.login(url,stringStringHashMap,"Login",login);
+    }
+
+    @ApiOperation(value = "登陆接口 用户名登陆")
+    @PostMapping("login/authentication/mobile")
+    @ApiImplicitParam(name = "Login", value = "Basic dXNlcl8xOjEyMzQ1Ng==", required = true, dataType = "string", paramType = "header")
+    public Response loginNoPassWord(HttpServletRequest httpServletRequest, @ApiParam("名称") @RequestParam("username") String username){
+        //todo 做小程序登陆校验
+        HashMap<String, String> stringStringHashMap = new HashMap<>(1);
+        stringStringHashMap.put("username",username);
+        String login = httpServletRequest.getHeader("Login");
+        String url = "http://localhost:" + port + noPassWordUrl;
         return jsonFromUrlHelper.login(url,stringStringHashMap,"Login",login);
     }
 }

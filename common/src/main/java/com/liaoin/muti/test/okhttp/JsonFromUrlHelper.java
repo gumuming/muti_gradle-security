@@ -6,7 +6,7 @@ import com.liaoin.muti.test.file.util.JsonUtils;
 import okhttp3.Response;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
+//import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -21,8 +21,8 @@ import java.util.Map;
 @Component
 public class JsonFromUrlHelper {
 
-    @Resource
-    ObjectMapper objectMapper;
+//    @Resource
+    ObjectMapper objectMapper = new ObjectMapper();
 
     /**
      * 通用接口返回
