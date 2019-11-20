@@ -54,4 +54,8 @@ public class TestController {
         return propertyOrderService.testXml(name);
     }
 
+    private String changeGit(){
+        return "hello chnange";
+    }
+
 }
