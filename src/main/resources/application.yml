@@ -5,12 +5,12 @@ spring:
   main:
     allow-bean-definition-overriding: true
   application:
-    name: smart-community-bean
+    name: jy-security-demo
   datasource:
-    url: jdbc:mysql://39.100.124.150:3306/city?serverTimezone=Hongkong&useSSL=false&useUnicode=true&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
+    url: jdbc:mysql://192.168.2.109:3306/city?serverTimezone=Hongkong&useSSL=false&useUnicode=true&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
     hikari:
       username: root
-      password: share_epc#123456
+      password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
@@ -32,8 +32,8 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   redis:
-    host: 39.100.124.150
-    port: 6379
+    host: 192.168.2.109
+    port: 5379
     database: 2
 
 
@@ -91,6 +91,7 @@ config:
     no-verify[12]: /user/login/authentication/form
     no-verify[13]: /user/login/authentication/mobile
     no-verify[14]: /base/uploadForUeditor
+    no-verify[15]: /user/login/authentication/register
 
 liaoin:
   security:

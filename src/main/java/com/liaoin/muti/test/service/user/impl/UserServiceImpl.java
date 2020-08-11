@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 /**
  * @author: RanJingde
@@ -31,5 +32,10 @@ public class UserServiceImpl implements UserService {
                 .build();
         userInfoRepo.save(build);
         return OptionalExt.ofNullable(build);
+    }
+
+    @Override
+    public Optional<UserInfo> findById(Integer id) {
+        return userInfoRepo.findById(id);
     }
 }

@@ -3,6 +3,7 @@ package com.liaoin.muti.test.controller.user;
 import com.liaoin.muti.test.http.Response;
 import com.liaoin.muti.test.okhttp.JsonFromUrlHelper;
 import com.liaoin.muti.test.okhttp.OkhttpUtils;
+import com.liaoin.muti.test.security.UserInfo;
 import com.liaoin.muti.test.service.user.UserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiModel;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.Optional;
 
 /**
  * @author: RanJingde
@@ -78,6 +80,19 @@ public class UserController {
                              @ApiParam(name = "username",defaultValue = "admin",value = "名称") @RequestParam(name = "username") String username,
                              @ApiParam(name = "password",defaultValue = "123456",value = "密码") @RequestParam(name = "password") String password){
         return userService.register(username,password).ifPresent(userInfo -> Response.success(),()->Response.failed("error"));
+    }
 
+    @ApiOperation(value = "查询用户信息")
+    @PostMapping("login/authentication/info")
+    @ApiImplicitParam(name = "Authorization", value = "授权码 以 Bearer  带一个空格", required = true, dataType = "string", paramType = "header")
+//    @ApiImplicitParam(name = "Login", value = "Basic dXNlcl8xOjEyMzQ1Ng==", defaultValue = "Basic dXNlcl8xOjEyMzQ1Ng==",required = true, dataType = "string", paramType = "header")
+    public Response info(
+            @ApiParam(name = "id",defaultValue = "1",value = "名称") @RequestParam(name = "id") Integer id){
+        Optional<UserInfo> byId = userService.findById(id);
+        boolean present = byId.isPresent();
+        if(present)
+            return Response.success(byId.get());
+        else
+            return Response.failed("error");
     }
 }
