@@ -13,10 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author mc
- * Create date 2019/7/13 10:17
- * Version 1.0
- * Description :
  * 与UsernamePasswordAuthenticationProcessingFilter内容一致，
  * 同样继承AbstractAuthenticationProcessingFilter
  */

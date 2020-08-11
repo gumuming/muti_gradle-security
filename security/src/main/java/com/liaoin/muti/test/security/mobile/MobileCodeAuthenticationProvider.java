@@ -8,12 +8,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-/**
- * @author mc
- * Create date 2019/7/13 10:31
- * Version 1.0
- * Description 自定义手机登陆效验逻辑
- */
+
 @Data
 public class MobileCodeAuthenticationProvider implements AuthenticationProvider {
 

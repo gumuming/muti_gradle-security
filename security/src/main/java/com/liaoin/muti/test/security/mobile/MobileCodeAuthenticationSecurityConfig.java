@@ -14,12 +14,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import javax.servlet.Filter;
 
-/**
- * @author mc
- * Create date 2019/7/13 10:39
- * Version 1.0
- * Description
- */
+
 @Component
 public class MobileCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 

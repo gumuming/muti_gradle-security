@@ -14,12 +14,7 @@ import javax.annotation.Resource;
 import java.io.File;
 import java.util.List;
 
-/**
- * @author mc
- * Create date 2019/3/4 15:53
- * Version 1.0
- * Description
- */
+
 @Configuration
 public class WebAppConfigurer extends WebMvcConfigurationSupport {
     @Resource

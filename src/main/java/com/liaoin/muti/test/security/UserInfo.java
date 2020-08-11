@@ -140,7 +140,6 @@ public class UserInfo  implements UserDetails, CredentialsContainer {
     @ApiModelProperty(value="系统标识")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition="int(11) COMMENT '系统标识'")
-    @NotNull(message = "参数不能为空")
     private Integer id;
 
 
@@ -155,7 +154,7 @@ public class UserInfo  implements UserDetails, CredentialsContainer {
 
     @ApiModelProperty("排序字段")
     @Column(columnDefinition="int(11) COMMENT '排序字段'")
-    private Integer userInfoIndex ;
+    private Integer userInfoIndex=1;
 
     @ApiModelProperty(value = "最后登陆时间",hidden = true)
     @Column(columnDefinition="datetime COMMENT '最后登陆时间'")
@@ -164,7 +163,7 @@ public class UserInfo  implements UserDetails, CredentialsContainer {
     private LocalDateTime landingTime;
 
     @ApiModelProperty(name = "是否启用",hidden = true)
-    private Integer isDelete;
+    private Integer isDelete = 0;
 
 
 

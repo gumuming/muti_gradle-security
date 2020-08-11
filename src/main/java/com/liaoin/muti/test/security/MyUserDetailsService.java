@@ -24,11 +24,15 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Resource
     BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Resource
+    UserInfoRepo userInfoRepo;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("登陆校验名称:{}",username);
-        return new UserInfo(1,"hello",bCryptPasswordEncoder.encode("123456"),true,true,true,true,
+        UserInfo userInfoByUsername = userInfoRepo.findUserInfoByUsername(username);
+        return new UserInfo(userInfoByUsername.getId(),username,userInfoByUsername.getPassword(),
+                true,true,true,true,
                 AuthorityUtils.commaSeparatedStringToAuthorityList("admin,ROLE_USER")
         );
     }

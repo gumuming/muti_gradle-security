@@ -3,6 +3,7 @@ package com.liaoin.muti.test.controller.user;
 import com.liaoin.muti.test.http.Response;
 import com.liaoin.muti.test.okhttp.JsonFromUrlHelper;
 import com.liaoin.muti.test.okhttp.OkhttpUtils;
+import com.liaoin.muti.test.service.user.UserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
@@ -39,6 +40,10 @@ public class UserController {
 
 
     @Resource
+    private UserService userService;
+
+
+    @Resource
     JsonFromUrlHelper jsonFromUrlHelper;
 
     @ApiOperation(value = "登陆接口 用户名和密码")
@@ -60,9 +65,19 @@ public class UserController {
     public Response loginNoPassWord(HttpServletRequest httpServletRequest, @ApiParam("名称") @RequestParam("username") String username){
         //todo 做小程序登陆校验
         HashMap<String, String> stringStringHashMap = new HashMap<>(1);
-        stringStringHashMap.put("username",username);
+        stringStringHashMap.put("mobile",username);
         String login = httpServletRequest.getHeader("Login");
         String url = "http://localhost:" + port + noPassWordUrl;
         return jsonFromUrlHelper.login(url,stringStringHashMap,"Login",login);
+    }
+
+    @ApiOperation(value = "测试添加用户")
+    @PostMapping("login/authentication/register")
+    @ApiImplicitParam(name = "Login", value = "Basic dXNlcl8xOjEyMzQ1Ng==", defaultValue = "Basic dXNlcl8xOjEyMzQ1Ng==",required = true, dataType = "string", paramType = "header")
+    public Response register(
+                             @ApiParam(name = "username",defaultValue = "admin",value = "名称") @RequestParam(name = "username") String username,
+                             @ApiParam(name = "password",defaultValue = "123456",value = "密码") @RequestParam(name = "password") String password){
+        return userService.register(username,password).ifPresent(userInfo -> Response.success(),()->Response.failed("error"));
+
     }
 }

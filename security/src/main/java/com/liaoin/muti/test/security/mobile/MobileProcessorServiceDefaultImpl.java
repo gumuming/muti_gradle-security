@@ -7,12 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
 
-/**
- * @author mc
- * Create date 2019/7/13 11:35
- * Version 1.0
- * Description
- */
+
 @Component
 public class MobileProcessorServiceDefaultImpl implements MobileProcessorService{
 	private Logger logger = LoggerFactory.getLogger(getClass());

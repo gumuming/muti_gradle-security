@@ -2,12 +2,7 @@ package com.liaoin.muti.test.security.mobile;
 
 import org.springframework.web.context.request.ServletWebRequest;
 
-/**
- * @author mc
- * Create date 2019/7/13 11:26
- * Version 1.0
- * Description
- */
+
 public interface MobileProcessorService {
 	/**
 	 * 校验手机号

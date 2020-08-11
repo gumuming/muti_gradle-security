@@ -6,12 +6,7 @@ import org.springframework.security.core.SpringSecurityCoreVersion;
 
 import java.util.Collection;
 
-/**
- * @author mc
- * Create date 2019/7/13 10:22
- * Version 1.0
- * Description
- */
+
 public class MobileCodeAuthenticationToken extends AbstractAuthenticationToken {
 
 	private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;

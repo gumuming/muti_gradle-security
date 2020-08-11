@@ -19,12 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * @author mc
- * Create date 2019/7/13 11:08
- * Version 1.0
- * Description
- */
+
 @Component
 public class MobileFilter extends OncePerRequestFilter implements InitializingBean {
 	/**
